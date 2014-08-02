@@ -1,0 +1,12 @@
+<h1>Projects</h1>
+<u1>
+	<% @projects.each do |project| %> <%#@projectsはcontrollerフォルダ内の「projects_controller.rb」に対応 %>
+	<li>
+	<%= link_to project.title, project_path(project.id) %> (<%= project.tasks.unfinished.count %>/<%= project.tasks.count %>)
+	<%= link_to "[Edit]", edit_project_path(project.id) %>
+	<%= link_to "[Delete]", project_path(project.id), method: :delete, data: { confirm: "are you sure?" } %>
+	</li>
+	<% end %>
+</u1>
+
+<p><%= link_to "Add New", new_project_path %></p>
